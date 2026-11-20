@@ -144,6 +144,77 @@
         </div>
       </div>
     </section>
+    <!-- SECCIÓN IA APLICADA: COTIZADOR Y RECOMENDADOR 3D -->
+    <section class="section-ia" id="asistente-ia">
+      <div class="container">
+        <div class="ia-wrapper" data-aos="fade-up">
+          <div class="ia-header">
+            <span class="section-tag"><i class="bx bx-sparkles"></i> Inteligencia Artificial Aplicada</span>
+            <h2>Asistente Recomendador y Cotizador 3D</h2>
+            <p>Cuéntanos qué idea, boceto o pieza tienes en mente. Nuestra IA analizará tu proyecto y te recomendará el servicio ideal, tiempos y entregables.</p>
+          </div>
+
+          <div class="ia-chips">
+            <span>Prueba con un ejemplo:</span>
+            <button type="button" class="chip-ejemplo">Botellas para marca</button>
+            <button type="button" class="chip-ejemplo">Pieza mecánica CAD</button>
+            <button type="button" class="chip-ejemplo">Boceto de producto</button>
+          </div>
+
+          <div class="ia-input-group">
+            <textarea
+              id="iaPromptInput"
+              rows="3"
+              placeholder="Ej: Tengo el boceto de un envase minimalista para mi marca de café y necesito visualizarlo en 3D antes de mandarlo a fabricar..."
+            ></textarea>
+            <button type="button" class="btn btn-primary" id="btnAnalizarIA">
+              <i class="bx bx-brain"></i> Analizar proyecto con IA
+            </button>
+          </div>
+
+          <!-- Estado de carga -->
+          <div class="ia-loading" id="iaLoading">
+            <div class="spinner"></div>
+            <span>Analizando requerimientos geométricos y comerciales...</span>
+          </div>
+
+          <!-- Resultado generado por la IA -->
+          <div class="ia-resultado" id="iaResultadoBox">
+            <div class="ia-res-top">
+              <div>
+                <span class="ia-badge" id="iaEnfoque">Enfoque</span>
+                <h3 id="iaServicio">Servicio Recomendado</h3>
+              </div>
+              <div class="ia-res-price">
+                <small>Inversión estimada</small>
+                <strong id="iaPrecio">$0</strong>
+              </div>
+            </div>
+
+            <p class="ia-res-desc" id="iaResumen"></p>
+
+            <div class="ia-res-grid">
+              <div class="ia-spec-item">
+                <strong><i class="bx bx-time"></i> Tiempo estimado:</strong>
+                <span id="iaTiempo"></span>
+              </div>
+              <div class="ia-spec-item">
+                <strong><i class="bx bx-file"></i> Entregables sugeridos:</strong>
+                <span id="iaFormatos"></span>
+              </div>
+              <div class="ia-spec-item full-span">
+                <strong><i class="bx bx-list-check"></i> ¿Qué necesitas tener listo para empezar?</strong>
+                <span id="iaRequisitos"></span>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-full" id="btnAplicarCotizacion">
+              Enviar esta cotización al formulario de contacto <i class="bx bx-right-arrow-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- MODAL DETALLE DEL SERVICIO -->
@@ -173,7 +244,7 @@
       </div>
     </div>
   </div>
-
+  <script src="js/ia-cotizador.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="js/catalogo.js"></script>
   <script src="js/app.js"></script>
