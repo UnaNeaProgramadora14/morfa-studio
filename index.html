@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MORFA Studio | Formando sueños en 3D</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAVEGACIÓN PRINCIPAL -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#inicio" class="brand">
+        <img src="assets/img/logo-morfa.png" alt="Logo MORFA Studio" class="brand-logo" onerror="this.style.display='none'" />
+        <div class="brand-text">
+          <span class="brand-name">MORFA</span>
+          <span class="brand-sub">STUDIO</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <i class="bx bx-menu"></i>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#inicio">Inicio</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#catalogo">Catálogo 3D</a>
+        <a href="#asistente-ia">Cotizador IA</a>
+        <a href="#contacto">Contacto</a>
+        <button class="btn-admin-nav" id="openAdminBtn">
+          <i class="bx bx-lock-alt"></i> Admin
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- SECCIÓN HERO (LANDING) -->
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-content" data-aos="fade-up">
+          <span class="badge-lema">« Formando sueños »</span>
+          <h1>Transformamos tus ideas y bocetos en experiencias <span>3D de precisión.</span></h1>
+          <p>
+            Modelado y visualización tridimensional a medida para marcas comerciales, productos innovadores y piezas técnicas o industriales.
+          </p>
+          <div class="hero-actions">
+            <a href="#catalogo" class="btn btn-primary">Explorar catálogo 3D</a>
+            <a href="#asistente-ia" class="btn btn-outline">
+              <i class="bx bx-sparkles"></i> Cotizar con IA
+            </a>
+          </div>
+          <div class="hero-metrics">
+            <div>
+              <strong>Comercial</strong>
+              <span>Renders & Packaging</span>
+            </div>
+            <div class="divider"></div>
+            <div>
+              <strong>Industrial</strong>
+              <span>Piezas & Prototipos</span>
+            </div>
+            <div class="divider"></div>
+            <div>
+              <strong>A medida</strong>
+              <span>Adaptado a tu proyecto</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" data-aos="fade-left" data-aos-delay="150">
+          <div class="hero-showcase-frame">
+            <img
+              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=85"
+              alt="Visualización 3D Minimalista MORFA Studio"
+              class="hero-render-img"
+            />
+            <div class="floating-badge">
+              <i class="bx bx-cube-alt"></i>
+              <div>
+                <strong>MORFA STUDIO</strong>
+                <span>Visualización & CAD 3D</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN PROCESO / PROPUESTA DE VALOR -->
+    <section class="section-dark" id="proceso">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag">Metodología MORFA</span>
+          <h2>De un boceto en papel a un modelo listo para el mundo real</h2>
+          <p>Combinamos estética contemporánea con rigor técnico para validar tu producto antes de invertir en producción.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card" data-aos="fade-up" data-aos-delay="0">
+            <span class="step-num">01</span>
+            <h3>Concepto y Boceto</h3>
+            <p>Analizamos tu idea, referencias, planos o medidas iniciales para definir el alcance exacto del proyecto.</p>
+          </div>
+          <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+            <span class="step-num">02</span>
+            <h3>Modelado 3D a Medida</h3>
+            <p>Construimos la geometría tridimensional con precisión industrial o acabado comercial según tu objetivo.</p>
+          </div>
+          <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+            <span class="step-num">03</span>
+            <h3>Render y Entrega</h3>
+            <p>Aplicamos materiales, iluminación de estudio y entregamos archivos listos para vender, presentar o fabricar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN CATÁLOGO DE SERVICIOS 3D -->
+    <section class="section-catalogo" id="catalogo">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag">Portafolio & Servicios</span>
+          <h2>Soluciones de Modelado y Visualización 3D</h2>
+          <p>Cada proyecto se adapta a tus necesidades. Explora nuestras líneas base de servicio.</p>
+        </div>
+
+        <div class="catalogo-filters" data-aos="fade-up">
+          <button class="filter-btn active" data-filter="todos">Todos los servicios</button>
+          <button class="filter-btn" data-filter="comercial">Comercial & Renders</button>
+          <button class="filter-btn" data-filter="industrial">Técnico & Industrial</button>
+          <button class="filter-btn" data-filter="paquete">Paquetes Combinados</button>
+        </div>
+
+        <div class="catalogo-grid" id="catalogoGrid">
+          <!-- Se llena dinámicamente desde js/catalogo.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL DETALLE DEL SERVICIO -->
+  <div class="modal-overlay" id="servicioModal">
+    <div class="modal-box">
+      <button class="modal-close" id="closeServicioModal"><i class="bx bx-x"></i></button>
+      <div class="modal-grid">
+        <img id="modalImg" src="" alt="Detalle servicio 3D" class="modal-img" />
+        <div class="modal-info">
+          <span class="card-badge" id="modalEtiqueta"></span>
+          <h3 id="modalTitulo"></h3>
+          <p id="modalDescripcion"></p>
+          <div class="modal-specs">
+            <div>
+              <strong>Entregables incluidos:</strong>
+              <p id="modalEntregables"></p>
+            </div>
+            <div class="modal-row">
+              <span><i class="bx bx-time-five"></i> <strong id="modalTiempo"></strong></span>
+              <span class="modal-price" id="modalPrecio"></span>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-full" id="modalCotizarBtn">
+            Solicitar este servicio
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/catalogo.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
