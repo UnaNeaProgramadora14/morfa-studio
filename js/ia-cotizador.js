@@ -1,13 +1,10 @@
-// Motor de IA Aplicada para MORFA Studio: Recomendador y Cotizador Inteligente 3D
-
 const promptsEjemplo = [
   "Tengo una marca nueva de botellas térmicas y quiero renders realistas para vender en Instagram y mi tienda online.",
   "Necesito modelar una pieza mecánica de soporte con medidas exactas para mandarla a imprimir en 3D.",
   "Tengo solo un boceto dibujado a mano de un mueble minimalista y quiero ver cómo quedaría antes de fabricarlo."
 ];
 
-// Análisis inteligente basado en reglas de negocio de MORFA Studio (Respaldo 100% offline/online)
-function analizarProyectoLocal(texto) {
+function analizarProyectoLocal(texto, archivoAdjunto = "") {
   const consulta = texto.toLowerCase();
 
   let servicioRecomendado = "Paquete Lanzamiento Integral MORFA";
@@ -39,6 +36,10 @@ function analizarProyectoLocal(texto) {
     requisitosCliente = "Logotipo o etiquetas en alta calidad, fotos de referencia y estilo de iluminación deseado.";
   }
 
+  const notaArchivo = archivoAdjunto
+    ? ` Además, recibimos tu archivo adjunto ("${archivoAdjunto}"), lo cual agiliza el levantamiento inicial de proporciones.`
+    : "";
+
   return {
     servicioRecomendado,
     enfoque,
@@ -46,17 +47,34 @@ function analizarProyectoLocal(texto) {
     tiempoEstimado,
     formatosEntrega,
     requisitosCliente,
-    resumenIA: `Basado en tu descripción, detectamos un requerimiento con enfoque ${enfoque.toLowerCase()}. Para transformar tu idea en un resultado claro y útil antes de pasar a la siguiente etapa, recomendamos iniciar con nuestro servicio de "${servicioRecomendado}".`
+    resumenIA: `Basado en tu descripción, detectamos un requerimiento con enfoque ${enfoque.toLowerCase()}. Recomendamos iniciar con "${servicioRecomendado}".${notaArchivo}`
   };
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   const inputIA = document.getElementById('iaPromptInput');
+  const archivoInput = document.getElementById('iaArchivoInput');
+  const archivoNombre = document.getElementById('iaArchivoNombre');
   const btnAnalizar = document.getElementById('btnAnalizarIA');
   const resultadoBox = document.getElementById('iaResultadoBox');
   const loadingBox = document.getElementById('iaLoading');
 
-  // Rellenar ejemplos rápidos al hacer clic
+  let nombreArchivoActual = "";
+
+  if (archivoInput && archivoNombre) {
+    archivoInput.addEventListener('change', () => {
+      if (archivoInput.files && archivoInput.files[0]) {
+        nombreArchivoActual = archivoInput.files[0].name;
+        archivoNombre.textContent = `Adjunto: ${nombreArchivoActual}`;
+        archivoNombre.style.color = '#38BDF8';
+      } else {
+        nombreArchivoActual = "";
+        archivoNombre.textContent = "Ningún archivo seleccionado";
+        archivoNombre.style.color = '';
+      }
+    });
+  }
+
   document.querySelectorAll('.chip-ejemplo').forEach((chip, index) => {
     chip.addEventListener('click', () => {
       if (inputIA && promptsEjemplo[index]) {
@@ -74,13 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Simular procesamiento de IA
       resultadoBox.classList.remove('active');
       loadingBox.classList.add('active');
       btnAnalizar.disabled = true;
 
       setTimeout(() => {
-        const diagnostico = analizarProyectoLocal(texto);
+        const diagnostico = analizarProyectoLocal(texto, nombreArchivoActual);
 
         document.getElementById('iaServicio').textContent = diagnostico.servicioRecomendado;
         document.getElementById('iaEnfoque').textContent = diagnostico.enfoque;
@@ -90,14 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('iaFormatos').textContent = diagnostico.formatosEntrega;
         document.getElementById('iaRequisitos').textContent = diagnostico.requisitosCliente;
 
-        // Conectar botón para llevar esta cotización al formulario de contacto
         const btnAplicar = document.getElementById('btnAplicarCotizacion');
         btnAplicar.onclick = () => {
           const selectServicio = document.getElementById('contactoServicio');
           const textareaMensaje = document.getElementById('contactoMensaje');
           if (selectServicio) selectServicio.value = diagnostico.servicioRecomendado;
           if (textareaMensaje) {
-            textareaMensaje.value = `Hola MORFA Studio, utilicé el Cotizador IA.\nIdea del proyecto: "${texto}"\nServicio sugerido: ${diagnostico.servicioRecomendado} (${diagnostico.precioEstimado}).`;
+            const textoArchivo = nombreArchivoActual ? `\nArchivo adjunto de referencia: ${nombreArchivoActual}` : "";
+            textareaMensaje.value = `Hola MORFA Studio, utilicé el Cotizador IA.\nIdea del proyecto: "${texto}"${textoArchivo}\nServicio sugerido: ${diagnostico.servicioRecomendado} (${diagnostico.precioEstimado}).`;
           }
           document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
         };
