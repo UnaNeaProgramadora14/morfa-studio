@@ -1,11 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  if (typeof AOS !== 'undefined') {
-    AOS.init({
-      duration: 700,
-      once: true,
-    });
-  }
-
   // Menú hamburguesa responsive
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
