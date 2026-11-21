@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@600;700&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <!-- Librería de animaciones permitida por la guía -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -25,9 +27,10 @@
 
       <nav class="nav-links" id="navLinks">
         <a href="#inicio">Inicio</a>
-        <a href="#proceso">Proceso</a>
+        <a href="#portafolio">Portafolio</a>
         <a href="#catalogo">Catálogo 3D</a>
         <a href="#asistente-ia">Cotizador IA</a>
+        <a href="#faq">FAQ</a>
         <a href="#contacto">Contacto</a>
         <button class="btn-admin-nav" id="openAdminBtn">
           <i class="bx bx-lock-alt"></i> Admin
@@ -40,7 +43,7 @@
     <!-- SECCIÓN HERO (LANDING) -->
     <section class="hero" id="inicio">
       <div class="container hero-grid">
-        <div class="hero-content">
+        <div class="hero-content animate__animated animate__fadeInUp">
           <span class="badge-lema">« Formando sueños »</span>
           <h1>Transformamos tus ideas y bocetos en experiencias <span>3D de precisión.</span></h1>
           <p>
@@ -70,10 +73,10 @@
           </div>
         </div>
 
-        <div class="hero-visual">
+        <div class="hero-visual animate__animated animate__fadeIn">
           <div class="hero-showcase-frame">
             <img
-              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=85"
+              src="assets/img/hero-3d.png"
               alt="Visualización 3D Minimalista MORFA Studio"
               class="hero-render-img"
             />
@@ -81,7 +84,7 @@
               <i class="bx bx-cube-alt"></i>
               <div>
                 <strong>MORFA STUDIO</strong>
-                <span>Visualización & CAD 3D</span>
+                <span>Render Comercial & CAD 3D</span>
               </div>
             </div>
           </div>
@@ -114,6 +117,49 @@
             <h3>Render y Entrega</h3>
             <p>Aplicamos materiales, iluminación de estudio y entregamos archivos listos para vender, presentar o fabricar.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: PORTAFOLIO / CASOS DE ESTUDIO REALES -->
+    <section class="section-portafolio" id="portafolio">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Muestra de Capacidades</span>
+          <h2>Proyectos Destacados del Estudio</h2>
+          <p>Ejemplos de cómo transformamos necesidades comerciales e industriales en piezas visuales de alto impacto.</p>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="portfolio-card">
+            <img src="assets/img/render-pieza.jpg" alt="Carcasa Mecánica CAD" />
+            <div class="portfolio-overlay">
+              <span class="card-badge">Ingeniería & CAD</span>
+              <h3>Carcasa Técnica Aero-Dron</h3>
+              <p>De croquis acotado a malla sólida y render técnico con validación de espesores y ensamblaje.</p>
+              <small>Herramientas: Modelado Paramétrico + Render Técnico</small>
+            </div>
+          </article>
+
+          <article class="portfolio-card">
+            <img src="assets/img/render-cafe.png" alt="Envase Café de Especialidad" />
+            <div class="portfolio-overlay">
+              <span class="card-badge">Packaging Comercial</span>
+              <h3>Contenedor Hermético Café Origen</h3>
+              <p>Visualización fotorrealista en aluminio cepillado y acabado mate para campaña de lanzamiento sin producir lote físico.</p>
+              <small>Herramientas: Texturizado PBR + Iluminación de Estudio</small>
+            </div>
+          </article>
+
+          <article class="portfolio-card">
+            <img src="assets/img/render-audifonos.jpg" alt="Diseño Industrial Audífonos" />
+            <div class="portfolio-overlay">
+              <span class="card-badge">Diseño de Producto</span>
+              <h3>Serie Studio Audio Pro</h3>
+              <p>Prototipo digital en fibra de carbono y acero para presentación ante inversores y catálogo web.</p>
+              <small>Herramientas: Subdivisión Hard-Surface + Render 4K</small>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -157,12 +203,21 @@
             <button type="button" class="chip-ejemplo">Boceto de producto</button>
           </div>
 
-          <div class="ia-input-group">
+         <div class="ia-input-group">
             <textarea
               id="iaPromptInput"
               rows="3"
               placeholder="Ej: Tengo el boceto de un envase minimalista para mi marca de café y necesito visualizarlo en 3D antes de mandarlo a fabricar..."
             ></textarea>
+
+            <div class="ia-file-upload">
+              <label for="iaArchivoInput" class="file-label">
+                <i class="bx bx-upload"></i> Adjuntar boceto, plano o referencia (JPG, PNG, PDF) — Opcional
+              </label>
+              <input type="file" id="iaArchivoInput" accept=".jpg,.jpeg,.png,.webp,.pdf" hidden />
+              <span id="iaArchivoNombre" class="file-name-badge">Ningún archivo seleccionado</span>
+            </div>
+
             <button type="button" class="btn btn-primary" id="btnAnalizarIA">
               <i class="bx bx-brain"></i> Analizar proyecto con IA
             </button>
@@ -209,7 +264,118 @@
         </div>
       </div>
     </section>
+
+    <!-- NUEVA SECCIÓN: PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="section-faq" id="faq">
+      <div class="container faq-container">
+        <div class="section-header">
+          <span class="section-tag">Resolvemos tus dudas</span>
+          <h2>Preguntas Frecuentes</h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>¿Qué necesito enviar si solo tengo una idea o un dibujo a mano?</summary>
+            <p>Con un boceto sencillo en papel, fotos de referencia y las medidas aproximadas (alto, ancho, profundidad) es suficiente para que en MORFA Studio construyamos el modelo 3D base y te mostremos avances.</p>
+          </details>
+          <details class="faq-item">
+            <summary>¿En qué formatos entregan los modelos y renders?</summary>
+            <p>Para visualización comercial entregamos imágenes en alta resolución (PNG/JPG 4K) y modelos en .OBJ, .FBX o .GLB. Para proyectos técnicos/industriales entregamos archivos .STEP y .STL listos para impresión 3D o mecanizado.</p>
+          </details>
+          <details class="faq-item">
+            <summary>¿Los paquetes incluyen rondas de cambios o ajustes?</summary>
+            <p>Sí, todos nuestros servicios incluyen 2 rondas de revisión sobre la geometría base y 1 ronda sobre materiales e iluminación antes de la entrega final.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN CONTACTO REAL -->
+    <section class="section-contacto" id="contacto">
+      <div class="container contacto-grid">
+        <div class="contacto-info">
+          <span class="section-tag">Iniciemos tu proyecto</span>
+          <h2>Convierte tu idea en un modelo 3D real</h2>
+          <p>
+            Cuéntanos qué quieres diseñar o visualizar. Recibirás una propuesta personalizada adaptada a las necesidades comerciales o técnicas de tu proyecto.
+          </p>
+
+          <div class="contacto-datos">
+            <div class="dato-item">
+              <i class="bx bx-envelope"></i>
+              <div>
+                <strong>Correo del Estudio</strong>
+                <span>contacto@morfastudio.co</span>
+              </div>
+            </div>
+            <div class="dato-item">
+              <i class="bx bx-map-pin"></i>
+              <div>
+                <strong>Ubicación</strong>
+                <span>Medellín, Colombia — Atención global</span>
+              </div>
+            </div>
+            <div class="dato-item">
+              <i class="bx bx-cube"></i>
+              <div>
+                <strong>Especialidad</strong>
+                <span>Modelado Comercial, Renders & CAD Industrial</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contacto-form" id="formContacto">
+          <h3>Solicitar Cotización</h3>
+          <div class="form-group">
+            <label for="contactoNombre">Nombre o Marca *</label>
+            <input type="text" id="contactoNombre" required placeholder="Ej: Camilo Ríos / Café Origen" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactoCorreo">Correo electrónico *</label>
+              <input type="email" id="contactoCorreo" required placeholder="tu@correo.com" />
+            </div>
+            <div class="form-group">
+              <label for="contactoTelefono">WhatsApp / Teléfono</label>
+              <input type="tel" id="contactoTelefono" placeholder="+57 300 000 0000" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contactoServicio">Servicio de interés *</label>
+            <select id="contactoServicio" required></select>
+          </div>
+          <div class="form-group">
+            <label for="contactoMensaje">Detalles del proyecto o boceto *</label>
+            <textarea id="contactoMensaje" rows="4" required placeholder="Describe dimensiones aproximadas, referencias o el uso que le darás al modelo 3D..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <i class="bx bx-send"></i> Enviar solicitud al estudio
+          </button>
+          <div class="form-alert-success" id="contactoAlerta">
+            <i class="bx bx-check-circle"></i> ¡Solicitud enviada! Ya quedó registrada en el Panel Admin de MORFA Studio.
+          </div>
+        </form>
+      </div>
+    </section>
   </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <img src="assets/img/logo-morfa.png" alt="MORFA Studio" class="brand-logo-only" />
+        <p>« Formando sueños » — Modelado y Visualización 3D.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#portafolio">Portafolio</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#asistente-ia">Cotizador IA</a>
+      </div>
+      <p class="footer-copy">© 2026 MORFA Studio. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
   <!-- MODAL DETALLE DEL SERVICIO -->
   <div class="modal-overlay" id="servicioModal">
@@ -239,8 +405,77 @@
     </div>
   </div>
 
+  <!-- MODAL PANEL ADMINISTRADOR (LOGIN + GESTIÓN INTERNA) -->
+  <div class="modal-overlay" id="adminModal">
+    <div class="modal-box admin-modal-box">
+      <button class="modal-close" id="closeAdminModal"><i class="bx bx-x"></i></button>
+
+      <div id="adminLoginView" class="admin-login-box">
+        <span class="section-tag"><i class="bx bx-shield-quarter"></i> Acceso Restringido</span>
+        <h3>Panel Interno MORFA Studio</h3>
+        <p>Ingresa tus credenciales de administrador para gestionar solicitudes y catálogo.</p>
+        <form id="formAdminLogin">
+          <div class="form-group">
+            <label for="adminUser">Usuario</label>
+            <input type="text" id="adminUser" required placeholder="admin" />
+          </div>
+          <div class="form-group">
+            <label for="adminPass">Contraseña</label>
+            <input type="password" id="adminPass" required placeholder="••••••••" />
+          </div>
+          <p class="login-error" id="adminLoginError">Usuario o contraseña incorrectos. (Demo: admin / morfa2026)</p>
+          <button type="submit" class="btn btn-primary btn-full">Iniciar sesión</button>
+        </form>
+        <small class="demo-hint">Credenciales demo para defensa: <strong>admin</strong> / <strong>morfa2026</strong></small>
+      </div>
+
+      <div id="adminDashboardView" class="admin-dashboard" style="display: none;">
+        <div class="admin-dash-header">
+          <div>
+            <span class="section-tag">Gestión Interna</span>
+            <h3>Panel de Control — MORFA Studio</h3>
+          </div>
+          <button class="btn btn-outline" id="btnAdminLogout"><i class="bx bx-log-out"></i> Salir</button>
+        </div>
+
+        <div class="admin-dash-grid">
+          <div class="admin-panel-col">
+            <h4>Solicitudes de Clientes <span class="badge-count" id="totalSolicitudesBadge">0</span></h4>
+            <div id="adminSolicitudesList" class="admin-scroll-list"></div>
+          </div>
+
+          <div class="admin-panel-col">
+            <h4>Agregar Nuevo Servicio 3D</h4>
+            <form id="formNuevoServicio" class="admin-mini-form">
+              <input type="text" id="newServTitulo" required placeholder="Título del servicio (ej: Animación 360°)" />
+              <div class="form-row">
+                <select id="newServCategoria">
+                  <option value="comercial">Comercial & Renders</option>
+                  <option value="industrial">Técnico & Industrial</option>
+                  <option value="paquete">Paquete Combinado</option>
+                </select>
+                <input type="text" id="newServEtiqueta" required placeholder="Etiqueta (ej: Animación)" />
+              </div>
+              <div class="form-row">
+                <input type="text" id="newServPrecio" required placeholder="Precio (ej: Desde $300.000 COP)" />
+                <input type="text" id="newServTiempo" required placeholder="Tiempo (ej: 5 días)" />
+              </div>
+              <input type="text" id="newServImg" placeholder="Ruta o URL de imagen (opcional)" />
+              <textarea id="newServDesc" rows="2" required placeholder="Descripción corta del servicio..."></textarea>
+              <button type="submit" class="btn btn-primary btn-full">+ Publicar en Catálogo</button>
+            </form>
+
+            <h4 style="margin-top: 20px;">Servicios Activos en Catálogo</h4>
+            <div id="adminCatalogoList" class="admin-scroll-list small-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="js/catalogo.js"></script>
   <script src="js/ia-cotizador.js"></script>
+  <script src="js/admin.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
